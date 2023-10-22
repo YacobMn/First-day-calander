@@ -6,13 +6,9 @@ var saveBtn = $(".saveBtn");
 var storedData = localStorage.getItem('calander');
 var todayTimeDate = $("#currentDay");
 
-
 // display todays time and date
-function displayTime() {
-  console.log('hellpppp')
-  var today = dayjs();
-  $('#currentDay').text(today.format('MMM D, YYYY [at] hh:mm:ss'));
-}
+var today = dayjs()
+$('#currentDay').text(today.format('MMM D, YYYY hh:mm:ss'));
 
 
 
@@ -57,7 +53,9 @@ $(function () {
   // TODO: Add code to get any user input that was saved in localStorage and set
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
-  //
-  // TODO: Add code to display the current date in the header of the page.
+  // if statment to change the hour and time with color
+  
+
+  
 });
 
