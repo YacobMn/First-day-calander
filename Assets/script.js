@@ -1,7 +1,21 @@
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
+var timeblc = $('.container-lg px-5');
 var saveBtn = $(".saveBtn");
+var storedData = localStorage.getItem('calander');
+var todayTimeDate = $("#currentDay");
+
+
+// display todays time and date
+function displayTime() {
+  console.log('hellpppp')
+  var today = dayjs();
+  $('#currentDay').text(today.format('MMM D, YYYY [at] hh:mm:ss'));
+}
+
+
+
 $(function () {
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
@@ -14,6 +28,8 @@ $(function () {
       var text = $(this).siblings(".description").val()
       console.log(text);
       // save it to the local storage,
+      localStorage.setItem(block, text);
+      console.log("stored item", (block, text));
     })
   })
   
@@ -24,6 +40,20 @@ $(function () {
   // past, present, and future classes? How can Day.js be used to get the
   // current hour in 24-hour time?
   //
+  for (var i = 9; i< 17; i++){
+    const currentTime = ""
+    hourName = "9am"
+    const newBlock = $(`
+    <div id="hour-${i}" class="row time-block ${currentTime}">
+        <div class="col-2 col-md-1 hour text-center py-3">${hourName}</div>
+        <textarea class="col-8 col-md-10 description" rows="3"> </textarea>
+
+        <button class="btn saveBtn col-2 col-md-1" aria-label="save">
+        <i class="fas fa-save" aria-hidden="true"></i>
+        </button>
+      </div>
+    `)
+  };
   // TODO: Add code to get any user input that was saved in localStorage and set
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
