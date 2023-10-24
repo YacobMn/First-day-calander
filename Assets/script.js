@@ -5,10 +5,11 @@ var timeblc = $('.container-lg px-5');
 var saveBtn = $(".saveBtn");
 var storedData = localStorage.getItem('calander');
 var todayTimeDate = $("#currentDay");
+var timeBlock = $('row time-block');
 
 // display todays time and date
-var today = dayjs()
-$('#currentDay').text(today.format('MMM D, YYYY hh:mm:ss'));
+var currentTime = dayjs()
+$('#currentDay').text(currentTime.format('MMM D, YYYY hh:mm:ss'));
 
 
 
@@ -24,8 +25,8 @@ $(function () {
       var text = $(this).siblings(".description").val()
       console.log(text);
       // save it to the local storage,
-      localStorage.setItem(block, text);
-      console.log("stored item", (block, text));
+      localStorage.setItem(storedData, text);
+      
     })
   })
   
@@ -37,10 +38,10 @@ $(function () {
   // current hour in 24-hour time?
   //
   for (var i = 9; i< 17; i++){
-    const currentTime = ""
+    const currentHour = dayjs().hour();
     hourName = "9am"
     const newBlock = $(`
-    <div id="hour-${i}" class="row time-block ${currentTime}">
+    <div id="hour-${i}" class="row time-block ${currentHour}">
         <div class="col-2 col-md-1 hour text-center py-3">${hourName}</div>
         <textarea class="col-8 col-md-10 description" rows="3"> </textarea>
 
@@ -49,12 +50,23 @@ $(function () {
         </button>
       </div>
     `)
+    var earlyToday = dayjs('2023-10-22 09:00:00')
+
+    if (timeBlock < currentHour()){
+      $(this).addClass('past');
+    } else if (timeBlock === currentHour){
+      $(this).addClass('present');
+
+    } else {
+      $(this).addClass('future');
+    }
+
   };
   // TODO: Add code to get any user input that was saved in localStorage and set
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
   // if statment to change the hour and time with color
-  
+
 
   
 });
