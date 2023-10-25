@@ -40,16 +40,15 @@ $(function () {
   for (var i = 9; i< 17; i++){
     const currentHour = dayjs().hour();
     hourName = "9am"
-    const newBlock = $(`
-    <div id="hour-${i}" class="row time-block ${currentHour}">
-        <div class="col-2 col-md-1 hour text-center py-3">${hourName}</div>
-        <textarea class="col-8 col-md-10 description" rows="3"> </textarea>
-
-        <button class="btn saveBtn col-2 col-md-1" aria-label="save">
-        <i class="fas fa-save" aria-hidden="true"></i>
-        </button>
-      </div>
-    `)
+    const newBlock = $(
+    <div id="" class="row time-block past">
+    <div class="col-2 col-md-1 hour text-center py-3">9AM</div>
+    <textarea class="col-8 col-md-10 description" rows="3"> </textarea>
+    <button class="btn saveBtn col-2 col-md-1" aria-label="save">
+    <i class="fas fa-save" aria-hidden="true"></i>
+    </button>
+    </div>)
+  
     var earlyToday = dayjs('2023-10-22 09:00:00')
 
     if (timeBlock < currentHour()){
