@@ -5,7 +5,7 @@ var timeblc = $('.container-lg px-5');
 var saveBtn = $(".saveBtn");
 var storedData = localStorage.getItem('calander');
 var todayTimeDate = $("#currentDay");
-var timeBlock = $('row time-block');
+var timeBlock = $('.time-block');
 
 // display todays time and date
 var currentTime = dayjs()
@@ -37,27 +37,29 @@ $(function () {
   // past, present, and future classes? How can Day.js be used to get the
   // current hour in 24-hour time?
   //
-  for (var i = 9; i< 17; i++){
+  for (var i = 9; i<= 17; i++){
     const currentHour = dayjs().hour();
     hourName = "9am"
-    const newBlock = $(
-    <div id="" class="row time-block past">
-    <div class="col-2 col-md-1 hour text-center py-3">9AM</div>
-    <textarea class="col-8 col-md-10 description" rows="3"> </textarea>
-    <button class="btn saveBtn col-2 col-md-1" aria-label="save">
-    <i class="fas fa-save" aria-hidden="true"></i>
-    </button>
-    </div>)
+    // const newBlock = $("body").html(`
+    // <div id="" class="row time-block past">
+    // <div class="col-2 col-md-1 hour text-center py-3">9AM</div>
+    // <textarea class="col-8 col-md-10 description" rows="3"> </textarea>
+    // <button class="btn saveBtn col-2 col-md-1" aria-label="save">
+    // <i class="fas fa-save" aria-hidden="true"></i>
+    // </button>
+    // </div>`)
   
     var earlyToday = dayjs('2023-10-22 09:00:00')
-
-    if (timeBlock < currentHour()){
-      $(this).addClass('past');
-    } else if (timeBlock === currentHour){
-      $(this).addClass('present');
+    var timeBlock = $("#hour-"+i)
+    console.log(currentHour)
+    console.log(i)
+    if (i < currentHour){
+      timeBlock.addClass('past');
+    } else if (i == currentHour){
+      timeBlock.addClass('present');
 
     } else {
-      $(this).addClass('future');
+      timeBlock.addClass('future');
     }
 
   };
