@@ -3,9 +3,7 @@
 // in the html.
 var timeblc = $('.container-lg px-5');
 var saveBtn = $(".saveBtn");
-var storedData = localStorage.getItem('calander');
 var todayTimeDate = $("#currentDay");
-var timeBlock = $('.time-block');
 
 // display todays time and date
 var currentTime = dayjs()
@@ -23,9 +21,10 @@ $(function () {
   $('.saveBtn').each(function(){
     $(this).on("click", () =>{
       var text = $(this).siblings(".description").val()
+      var nameHour = $(this).parent().attr("id")
       console.log(text);
       // save it to the local storage,
-      localStorage.setItem(storedData, text);
+      localStorage.setItem(nameHour, text);
       
     })
   })
@@ -51,8 +50,12 @@ $(function () {
   
     var earlyToday = dayjs('2023-10-22 09:00:00')
     var timeBlock = $("#hour-"+i)
-    console.log(currentHour)
-    console.log(i)
+    var storage = localStorage.getItem('hour-'+i)
+    console.log(storage)
+    timeBlock.children("textarea").val(storage)
+
+
+
     if (i < currentHour){
       timeBlock.addClass('past');
     } else if (i == currentHour){
